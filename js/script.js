@@ -3,28 +3,28 @@ var selectedRow = null;
 //console.log("aaaaaa");
 function onFormSubmit(e) 
 {
-    console.log("wwwwwwwwww");
+   // console.log("wwwwwwwwww");
     event.preventDefault();
     var formData = onSelectedData();
     if(selectedRow === null)
     {
-        console.log("xxxxxxxxx");
+        // console.log("xxxxxxxxx");
         insertData(formData);
     }
     else 
     {
-        console.log("yyyyyyyyyyyy");
+        //  console.log("yyyyyyyyyyyy");
         updateRecord(formData);
     }
-    console.log("zzzzzzzzzzzz");
-    resetForm();
+       //   console.log("zzzzzzzzzzzz");
+        resetForm();
 }
 
  //  Fetch the data
 
 function onSelectedData () 
 {
-    console.log("sssssssssssss");
+     // console.log("sssssssssssss");
     var formData = {};
     formData["empId"] = document.getElementById("empId").value;
     formData["empname"] = document.getElementById("empname").value;
@@ -32,6 +32,7 @@ function onSelectedData ()
     formData["dob"] = document.getElementById("dob").value;
     formData["pa"] = document.getElementById("pa").value;
     formData["sr"] = document.getElementById("sr").value;
+    formData["address"] = document.getElementById("address").value;
     return formData;
 }
 
@@ -39,7 +40,7 @@ function onSelectedData ()
 
  function insertData(data) 
  {
-    console.log("iiiiiiiiiiiiii");
+    //  console.log("iiiiiiiiiiiiii");
     var table = document.getElementById("storeList").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
     var cell1 = newRow.insertCell(0);
@@ -61,22 +62,31 @@ function onSelectedData ()
      cell6.innerHTML = data.sr;
 
      var cell7 = newRow.insertCell(6);
-     cell7.innerHTML = `<button onClick='onEdit(this)'>Edit</button> <button onClick='onDelete(this)'>Delete</button>`
+     cell7.innerHTML = data.address;
+
+     var cell8 = newRow.insertCell(7);
+     cell8.innerHTML = `<button onClick='onEdit(this)' class='btn btn-success'>Edit</button> <button onClick='onDelete(this)' class='btn btn-danger'>Delete</button>`
  }
 
 
  //   Edit the data
 
-     function onEdit(td) 
-     {
-        console.log("eeeeeeeeeeee");
-        selectedRow = td.parentElement;
-       // document.getElementById("empId").value = selectedRow.cells[0].innerHTML;
-     }
+    //  function onEdit(td) 
+    //  {
+    //     console.log("eeeeeeeeeeee");
+    //     selectedRow = td.parentElement;
+    //    // document.getElementById("empId").value = selectedRow.cells[0].innerHTML;
+    //  }
+
+
+  //   Edit the data
+  
+  
+      document.querySelector
 
  function updateRecord(formData) 
  {
-    console.log("uuuuuuuuuuuu");
+    // console.log("uuuuuuuuuuuu");
     selectedRow.cells[0].innerHTML = formData.empId;
  }
 
@@ -86,8 +96,8 @@ function onSelectedData ()
 
   function onDelete(td) 
   {
-    console.log("ddddddddd");
-    if(confirm('delete'))
+   //  console.log("ddddddddd");
+    if(confirm('Do you want to delete the record'))
     {
         row = td.parentElement.parentElement;
         document.getElementById('storeList').deleteRow(row.rowIndex);
@@ -98,11 +108,12 @@ function onSelectedData ()
 
   function resetForm() 
   {
-    console.log("rrrrrrrr");
+    // console.log("rrrrrrrr");
     document.getElementById('empId').value = '';
     document.getElementById('empname').value = '';
     document.getElementById('doj').value = '';
     document.getElementById('dob').value = '';
     document.getElementById('pa').value = '';
     document.getElementById('sr').value = '';
+    document.getElementById('address').value = '';
   }
