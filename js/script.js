@@ -78,11 +78,9 @@ function onSelectedData ()
     //    // document.getElementById("empId").value = selectedRow.cells[0].innerHTML;
     //  }
 
-
-  //   Edit the data
   
   
-      document.querySelector
+      
 
  function updateRecord(formData) 
  {
